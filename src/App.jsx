@@ -1,39 +1,19 @@
-import React, { Suspense } from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import Navbar from './components/nav/Navbar';
-import Leftbar from './components/nav/Leftbar';
-import { CircularProgress } from '@mui/material';
+import React from 'react';
+import Articles from './components/Articles';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
+import Section from './components/Section';
 
 function App() {
-  const Home = React.lazy(() => import('./pages/Home'));
-  const Movies = React.lazy(() => import('./pages/Movies'));
-  const MovieDetail = React.lazy(() => import('./pages/MovieDetail'));
-  const TvSeriess = React.lazy(() => import('./pages/TvSeriess'));
-  const TvSeriesDetail = React.lazy(() => import('./pages/TvSeriesDetail'));
-
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <Leftbar />
-        <Suspense
-          fallback={
-            <div style={{ marginLeft: '50%' }}>
-              <CircularProgress color='success' />
-            </div>
-          }
-        >
-          <Routes>
-            <Route path='*' element={<Home />} />
-            <Route path='/' element={<Home />} />
-            <Route path='/Movies' element={<Movies />} />
-            <Route path='/Movie/:id' element={<MovieDetail />} />
-            <Route path='/Tv-Series' element={<TvSeriess />} />
-            <Route path='/Tv-Series/:id' element={<TvSeriesDetail />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </>
+    <div className=' w-full backgroundDesktop  md:backgroundMobile'>
+      <Navbar />
+      <Hero />
+      <Section />
+      <Articles />
+      <Footer />
+    </div>
   );
 }
 
